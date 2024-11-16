@@ -27,7 +27,7 @@ const Card = () => {
             key={card.id}
             onClick={handle_click}
             whileTap={{ scale: 0.9 }}
-            className="bg-gradient-to-r from-blue-400 to-blue-600 p-6 rounded-xl shadow-xl flex-1 w-[467px]"
+            className="bg-gradient-to-r from-blue-400 to-blue-600 p-6 rounded-xl shadow-xl flex-1 flex flex-col w-full .btn"
           >
             <span className="flex text-primary text-left text-lg">
               Total balance
