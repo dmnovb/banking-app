@@ -9,7 +9,6 @@ const App = () => {
     <Provider store={store}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Layout />
-        {/* <ModeToggle /> */}
       </ThemeProvider>
     </Provider>
   );

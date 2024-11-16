@@ -1,9 +1,13 @@
-import { Card, Dock } from '@/components';
+import { BottomMenu, Card, Dock, Transactions } from '@/components';
 
 const Layout = () => {
   return (
-    <div className="relative">
+    <div className="">
       <Card />
+      <div className="flex justify-center px-4">
+        <Transactions />
+      </div>
+      {/* <BottomMenu /> */}
       {/* <Dock /> */}
     </div>
   );
