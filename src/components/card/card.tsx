@@ -99,7 +99,7 @@ const Cards = ({ children }: Props) => (
       <div className="mx-auto w-full max-w-sm">
         <DrawerHeader>
           <DrawerTitle className="text-primary">Select your card</DrawerTitle>
-          <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+          {/* <DrawerDescription>Set your daily activity goal.</DrawerDescription> */}
         </DrawerHeader>
 
         <DrawerFooter>
