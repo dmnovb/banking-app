@@ -18,8 +18,8 @@ button {
     --primary-foreground: 0 0% 98%;
     --background-tertiary: 220 13% 12%;
     --text-primary: 0, 0%, 100%;
-    --text-secondary: 213, 11%, 45%; /* This is your separate secondary text color */
-    --background-secondary: 220 16% 9%; /* This is the secondary background color */
+    --text-secondary: 213, 11%, 45%;
+    --background-secondary: 220 16% 9%;
     --tertiary: 220 13% 12%;
     --muted: 0 0% 95.9%;
     --muted-foreground: 0 0% 46.1%;

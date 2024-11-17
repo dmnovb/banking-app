@@ -16,4 +16,5 @@ export type TransactionType = {
   icon: ReactNode<SVGElement>;
   category: TransactionCategory;
   timeOfTransaction: Date | number;
+  type: 'outgoing' | 'incoming';
 };

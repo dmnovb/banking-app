@@ -9,6 +9,7 @@ export default [
     icon: 'https://sofiyskavoda.bg/images/favicons/apple-touch-icon.png',
     category: 'utility',
     timeOfTransaction: Date.now(),
+    type: 'incoming',
   },
   {
     id: 3,
@@ -17,6 +18,7 @@ export default [
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/2048px-Steam_icon_logo.svg.png',
     category: 'entertainment',
     timeOfTransaction: Date.now(),
+    type: 'outgoing',
   },
   {
     id: 4,
@@ -25,6 +27,7 @@ export default [
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/2048px-Steam_icon_logo.svg.png',
     category: 'entertainment',
     timeOfTransaction: Date.now(),
+    type: 'outgoing',
   },
   {
     id: 5,
@@ -33,6 +36,7 @@ export default [
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/2048px-Steam_icon_logo.svg.png',
     category: 'entertainment',
     timeOfTransaction: Date.now(),
+    type: 'outgoing',
   },
   {
     id: 6,
@@ -41,5 +45,6 @@ export default [
     icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/2048px-Steam_icon_logo.svg.png',
     category: 'entertainment',
     timeOfTransaction: Date.now(),
+    type: 'outgoing',
   },
 ] as TransactionType[];

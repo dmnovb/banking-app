@@ -1,15 +1,16 @@
 import { BottomMenu, Card, Dock, Transactions } from '@/components';
+import { Fragment } from 'react/jsx-runtime';
+import { BentoDemo } from '../bento';
 
 const Layout = () => {
   return (
-    <div className="">
+    <Fragment>
       <Card />
-      <div className="flex justify-center px-4">
-        <Transactions />
-      </div>
-      {/* <BottomMenu /> */}
-      {/* <Dock /> */}
-    </div>
+      <Transactions />
+      <BottomMenu />
+
+      {/* <BentoDemo /> */}
+    </Fragment>
   );
 };
 
