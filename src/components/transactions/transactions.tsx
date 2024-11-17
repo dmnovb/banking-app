@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 const Transactions = () => {
   return (
     <div className="px-4">
-      <div className="mt-4 rounded p-4 flex-col bg-secondary-background text-primary overflow-scroll">
+      <div className="mt-4 rounded p-4 flex-col bg-secondary-background text-primary overflow-auto max-h-52">
         {data.map((transaction) => (
           <div
             key={transaction.id}
@@ -18,7 +18,7 @@ const Transactions = () => {
               </Avatar>
               <div className="flex flex-col gap-1">
                 <span>{transaction.merchant}</span>
-                <Badge className={'text-secondary w-fit'}>
+                <Badge className={'text-secondary w-fit capitalize'}>
                   {transaction.category}
                 </Badge>
               </div>

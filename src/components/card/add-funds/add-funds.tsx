@@ -30,7 +30,7 @@ const AddFunds = ({ children }: Props) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, '');
     setAmount(value ? parseInt(value, 10) : 0);
-    setAnimateKey((prev) => !prev); // Toggle animation key
+    setAnimateKey((prev) => !prev);
   };
 
   const handleFocus = (e: any) => {
@@ -88,7 +88,7 @@ const AddFunds = ({ children }: Props) => {
               onChange={handleInputChange}
               onFocus={handleFocus}
               onBlur={handleBlur}
-              animate={{ scale: animateKey ? 1.1 : 1, opacity: 1 }} // Dynamically toggle scale
+              animate={{ scale: animateKey ? 1.1 : 1, opacity: 1 }}
               transition={{ duration: 0.2 }}
               initial={{ scale: 1, opacity: 1 }}
               className="text-6xl bg-transparent text-center text-primary focus:outline-none"
@@ -107,14 +107,9 @@ const AddFunds = ({ children }: Props) => {
           </p>
 
           <DrawerFooter className="mt-10">
-            <Button className="w-full text-primary py-2 rounded">Submit</Button>
-            <DrawerClose className="w-full bg-transparent text-gray-400 py-2 mt-2 rounded">
-              <Button
-                variant="default"
-                className="text-black bg-white hover:bg-white/80"
-              >
-                Cancel
-              </Button>
+            <Button className="w-full text-primary py-2 rounded">PAY</Button>
+            <DrawerClose className="w-full bg-white text-blac py-1 mt-1 rounded hover:bg-white/80">
+              CANCEL
             </DrawerClose>
           </DrawerFooter>
         </div>

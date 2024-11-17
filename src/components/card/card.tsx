@@ -10,8 +10,13 @@ import { DialogTrigger } from '@radix-ui/react-dialog';
 import AddFunds from './add-funds/add-funds';
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
+import { currentCard } from '@/atoms/cardAtom';
 
 const Card = () => {
+  const cardAtom = useAtom(currentCard);
+
+  const card = cardAtom[0];
+
   const [isNumberVisible, setIsNumberVisible] = useState(false);
 
   const handleNumberVisibility = (e: React.MouseEvent): void => {
@@ -23,40 +28,40 @@ const Card = () => {
     <div>
       <Drawer>
         <div className="flex flex-1 p-4 w-full">
-          {cards.map((card) => (
-            <motion.div
-              key={card.id}
-              whileTap={{ scale: 0.9 }}
-              className="bg-gradient-to-r from-blue-400 to-blue-600 p-6 rounded-xl shadow-xl flex-1 flex flex-col w-full .btn"
-            >
-              <span className="flex text-primary text-left text-lg font-bold">
-                Total balance
-              </span>
+          {/* {cards.map((card) => ( */}
+          <motion.div
+            key={card.id}
+            whileTap={{ scale: 0.9 }}
+            className="bg-gradient-to-r from-blue-400 to-blue-600 p-6 rounded-xl shadow-xl flex-1 flex flex-col w-full .btn"
+          >
+            <span className="flex text-primary text-left text-lg font-bold">
+              Total balance
+            </span>
 
-              <div className="flex justify-between items-center mb-4">
-                <div className="text-primary text-4xl font-extrabold">
-                  $
-                  {card.currentBalance.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
-                </div>
+            <div className="flex justify-between items-center mb-4">
+              <div className="text-primary text-4xl font-extrabold">
+                $
+                {card.currentBalance.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </div>
+            </div>
 
-              <div className="flex justify-between items-center py-4 text-md">
-                <span className="text-primary">Exp {card.expiryDate}</span>
-              </div>
+            <div className="flex justify-between items-center py-4 text-md">
+              <span className="text-primary">Exp {card.expiryDate}</span>
+            </div>
 
-              <span className="text-primary text-left flex items-center gap-2 py-4 text-lg">
-                {ccn(card.creditCardNumber)}
-                {isNumberVisible ? (
-                  <Eye size={18} onClick={handleNumberVisibility} />
-                ) : (
-                  <EyeOff size={18} onClick={handleNumberVisibility} />
-                )}
-              </span>
-            </motion.div>
-          ))}
+            <span className="text-primary text-left flex items-center gap-2 py-4 text-lg">
+              {ccn(card.creditCardNumber)}
+              {isNumberVisible ? (
+                <Eye size={18} onClick={handleNumberVisibility} />
+              ) : (
+                <EyeOff size={18} onClick={handleNumberVisibility} />
+              )}
+            </span>
+          </motion.div>
+          {/* // ))} */}
         </div>
       </Drawer>
 
