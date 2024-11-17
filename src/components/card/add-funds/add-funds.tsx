@@ -11,30 +11,37 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer';
 import { Button } from '@/components/ui/button';
+import { useAtom, useSetAtom } from 'jotai';
+import { currentCard } from '@/atoms/cardAtom';
+import { toast } from 'sonner';
 
 interface Props {
   className?: string;
+  open?: boolean;
+  setOpen?: (arg: boolean) => void;
   children: ReactNode;
   title?: string;
   description?: string;
   triggerClassName?: string;
 }
 
-const AddFunds = ({ children }: Props) => {
+const AddFunds = ({ children, open, setOpen }: Props) => {
+  const asdf: any = useAtom(currentCard);
+  const card = asdf[0];
+
+  console.log(open);
+  const setCard = useSetAtom(currentCard);
+
   const [amount, setAmount] = useState<number>(400);
   const [currency, setCurrency] = useState<string>('USD');
   const [animateKey, setAnimateKey] = useState(false);
-
-  const focusRef = useRef<any | null>(null);
+  // const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, '');
     setAmount(value ? parseInt(value, 10) : 0);
     setAnimateKey((prev) => !prev);
-  };
-
-  const handleFocus = (e: any) => {
-    focusRef.current = e.current.target.select();
   };
 
   const handleBlur = () => {
@@ -45,8 +52,20 @@ const AddFunds = ({ children }: Props) => {
     setCurrency(e.target.value);
   };
 
+  const handleAddFunds = async (e: React.MouseEvent) => {
+    setLoading(true);
+    await new Promise<void>((resolve) => setTimeout(resolve, 2000));
+
+    setCard({ ...card, currentBalance: card.currentBalance + amount });
+    setOpen && setOpen(false);
+    setLoading(false);
+    return toast('Transaction successful.', {
+      description: `$${amount} has been deposited successfully!`,
+    });
+  };
+
   return (
-    <Drawer>
+    <Drawer open={open}>
       <DrawerTrigger>{children}</DrawerTrigger>
 
       <DrawerContent className="bg-secondary-background h-full">
@@ -74,41 +93,32 @@ const AddFunds = ({ children }: Props) => {
           </div>
 
           <div className="flex items-center justify-center mt-8 space-x-4">
-            <Button
-              onClick={() => setAmount((prev) => Math.max(prev - 10, 0))}
-              disabled={amount <= 0}
-              className="text-2xl bg-gray-700 text-white rounded-full w-10 h-10 flex items-center justify-center"
-            >
-              -
-            </Button>
-
             <motion.input
               type="text"
               value={amount}
               onChange={handleInputChange}
-              onFocus={handleFocus}
               onBlur={handleBlur}
               animate={{ scale: animateKey ? 1.1 : 1, opacity: 1 }}
               transition={{ duration: 0.2 }}
               initial={{ scale: 1, opacity: 1 }}
               className="text-6xl bg-transparent text-center text-primary focus:outline-none"
             />
-
-            <Button
-              onClick={() => setAmount((prev) => prev + 10)}
-              className="text-2xl bg-gray-700 text-white rounded-full w-10 h-10 flex items-center justify-center"
-            >
-              +
-            </Button>
           </div>
 
-          <p className="text-center mt-2 text-white text-sm">
-            {currency} / DAY
-          </p>
+          <p className="text-center mt-2 text-white text-sm">{currency}</p>
 
-          <DrawerFooter className="mt-10">
-            <Button className="w-full text-primary py-2 rounded">PAY</Button>
-            <DrawerClose className="w-full bg-white text-blac py-1 mt-1 rounded hover:bg-white/80">
+          <DrawerFooter className="mt-10 font-bold">
+            <Button
+              className="w-full text-primary py-2 rounded font-bold"
+              onClick={handleAddFunds}
+              disabled={loading}
+            >
+              PAY
+            </Button>
+            <DrawerClose
+              onClick={() => setOpen && setOpen(false)}
+              className="w-full bg-white text-blac py-1 mt-1 rounded hover:bg-white/80"
+            >
               CANCEL
             </DrawerClose>
           </DrawerFooter>

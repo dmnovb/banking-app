@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 const Transactions = () => {
   return (
     <div className="px-4">
-      <div className="mt-4 rounded p-4 flex-col bg-secondary-background text-primary overflow-auto max-h-52">
+      <div className="mt-4 rounded p-4 flex-col bg-secondary-background text-primary overflow-auto">
         {data.map((transaction) => (
           <div
             key={transaction.id}

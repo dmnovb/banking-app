@@ -1,6 +1,14 @@
 import { atom } from 'jotai';
 
-export const currentCard = atom<any>({
+interface Card {
+  id: number;
+  creditCardNumber: string;
+  currentBalance: number;
+  expiryDate: string;
+  cvv: string;
+}
+
+export const currentCard = atom<Card>({
   id: 1,
   creditCardNumber: '1234 5678 9012 3456',
   currentBalance: 45500.75,

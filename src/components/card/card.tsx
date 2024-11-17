@@ -15,7 +15,7 @@ import { currentCard } from '@/atoms/cardAtom';
 const Card = () => {
   const cardAtom = useAtom(currentCard);
 
-  const card = cardAtom[0];
+  const card: any = cardAtom[0];
 
   const [isNumberVisible, setIsNumberVisible] = useState(false);
 
@@ -28,7 +28,6 @@ const Card = () => {
     <div>
       <Drawer>
         <div className="flex flex-1 p-4 w-full">
-          {/* {cards.map((card) => ( */}
           <motion.div
             key={card.id}
             whileTap={{ scale: 0.9 }}
@@ -40,11 +39,7 @@ const Card = () => {
 
             <div className="flex justify-between items-center mb-4">
               <div className="text-primary text-4xl font-extrabold">
-                $
-                {card.currentBalance.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
+                ${card.currentBalance}
               </div>
             </div>
 
@@ -61,7 +56,6 @@ const Card = () => {
               )}
             </span>
           </motion.div>
-          {/* // ))} */}
         </div>
       </Drawer>
 
@@ -73,6 +67,8 @@ const Card = () => {
 export default Card;
 
 const Controls = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="flex items-center content-center justify-between px-4">
       {controls.map((control) => (
@@ -81,8 +77,11 @@ const Controls = () => {
           className="bg-secondary-background p-4 flex justify-center items-center shadow-lg rounded"
           aria-label={control.label}
         >
-          <AddFunds>
-            <div className="flex flex-col w-full items-center gap-2 text-[#00a1ff]">
+          <AddFunds open={open} setOpen={setOpen}>
+            <div
+              onClick={() => setOpen(!open)}
+              className="flex flex-col w-full items-center gap-2 text-[#00a1ff]"
+            >
               <control.icon />
               <p className="text-sm font-extrabold">{control.label}</p>
             </div>
