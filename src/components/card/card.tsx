@@ -77,8 +77,8 @@ const Controls = () => {
           aria-label={control.label}
         >
           <AddFunds>
-            <div className="flex w-full items-center gap-2 text-[#00a1ff]">
-              <control.icon className="flex self-center" />
+            <div className="flex flex-col w-full items-center gap-2 text-[#00a1ff]">
+              <control.icon />
               <p className="text-sm font-extrabold">{control.label}</p>
             </div>
           </AddFunds>
